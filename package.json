@@ -1,0 +1,34 @@
+{
+  "name": "ember-cli-internal-test-helpers",
+  "version": "0.1.0",
+  "description": "Internal test helpers for ember-cli",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ember-cli/ember-cli-internal-test-helpers.git"
+  },
+  "keywords": [
+    "['ember-cli']"
+  ],
+  "author": "Jake Bixby",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ember-cli/ember-cli-internal-test-helpers/issues"
+  },
+  "homepage": "https://github.com/ember-cli/ember-cli-internal-test-helpers#readme",
+  "dependencies": {
+    "chai": "^3.3.0",
+    "chai-as-promised": "^5.1.0",
+    "configstore": "^1.2.1",
+    "cpr": "^0.4.2",
+    "ember-cli": "^1.13.8",
+    "exists-sync": "0.0.3",
+    "fs-extra": "^0.24.0",
+    "lodash": "^3.6.0",
+    "symlink-or-copy": "^1.0.1",
+    "through": "^2.3.8"
+  }
+}
