@@ -22,6 +22,7 @@
   "dependencies": {
     "chai": "^3.3.0",
     "chai-as-promised": "^5.1.0",
+    "chalk": "^1.1.1",
     "configstore": "^1.2.1",
     "cpr": "^0.4.2",
     "debug": "^2.2.0",
