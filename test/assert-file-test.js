@@ -1,5 +1,6 @@
 var assertFile = require('../lib/helpers/assert-file');
 var expect = require('chai').expect;
+var catchError = require('./helpers/catch-error');
 
 describe('assert-file', function() {
   it('should pass if file exists', function() {
@@ -7,9 +8,12 @@ describe('assert-file', function() {
   });
 
   it('should throw if file does not exist', function() {
-    expect(function() {
+    var err = catchError(function() {
       assertFile('test/fixtures/missing.txt');
-    }).to.throw('AssertionError: expected test/fixtures/missing.txt to exist: expected false to equal true')
+    });
+
+    expect(err).to.exist;
+    expect(err.toString()).to.equal('AssertionError: expected test/fixtures/missing.txt to exist: expected false to equal true');
   });
 
   describe('isEmpty', function() {
@@ -18,9 +22,12 @@ describe('assert-file', function() {
     });
 
     it('should throw if file is not empty', function() {
-      expect(function() {
+      var err = catchError(function() {
         assertFile('test/fixtures/foo123.txt', { isEmpty: true });
-      }).to.throw('AssertionError: \n\nexpected test/fixtures/foo123.txt:\n\nfoo\n123\nfoo123foo\nbla\n\nto be empty.\n: expected \'foo\\n123\\nfoo123foo\\nbla\\n\' to equal \'\'')
+      });
+
+      expect(err).to.exist;
+      expect(err.toString()).to.equal('AssertionError: \n\nexpected test/fixtures/foo123.txt:\n\nfoo\n123\nfoo123foo\nbla\n\nto be empty.\n: expected \'foo\\n123\\nfoo123foo\\nbla\\n\' to equal \'\'');
     });
   });
 
@@ -30,9 +37,12 @@ describe('assert-file', function() {
     });
 
     it('should throw if file does not contain string', function() {
-      expect(function() {
+      var err = catchError(function() {
         assertFile('test/fixtures/foo123.txt', { contains: 'bar' });
-      }).to.throw('EqualityError: expected: `test/fixtures/foo123.txt`')
+      });
+
+      expect(err).to.exist;
+      expect(err.toString()).to.equal('EqualityError: expected: `test/fixtures/foo123.txt`');
     });
 
     it('should pass if file contains multiple strings', function() {
@@ -40,9 +50,12 @@ describe('assert-file', function() {
     });
 
     it('should throw if file does not contain one of multiple strings', function() {
-      expect(function() {
+      var err = catchError(function() {
         assertFile('test/fixtures/foo123.txt', { contains: ['foo', 'bar'] });
-      }).to.throw('EqualityError: expected: `test/fixtures/foo123.txt`')
+      });
+
+      expect(err).to.exist;
+      expect(err.toString()).to.equal('EqualityError: expected: `test/fixtures/foo123.txt`');
     });
 
     it('should pass if file matches regex', function() {
@@ -50,9 +63,12 @@ describe('assert-file', function() {
     });
 
     it('should throw if file does not match regex', function() {
-      expect(function() {
+      var err = catchError(function() {
         assertFile('test/fixtures/foo123.txt', { contains: /bar/ });
-      }).to.throw('EqualityError: expected: `test/fixtures/foo123.txt`')
+      });
+
+      expect(err).to.exist;
+      expect(err.toString()).to.equal('EqualityError: expected: `test/fixtures/foo123.txt`');
     });
 
     it('should pass if file matches multiple regexes', function() {
@@ -60,9 +76,12 @@ describe('assert-file', function() {
     });
 
     it('should throw if file does not match one of multiple regexes', function() {
-      expect(function() {
+      var err = catchError(function() {
         assertFile('test/fixtures/foo123.txt', { contains: [/fo+/, /bar/] });
-      }).to.throw('EqualityError: expected: `test/fixtures/foo123.txt`')
+      });
+
+      expect(err).to.exist;
+      expect(err.toString()).to.equal('EqualityError: expected: `test/fixtures/foo123.txt`');
     });
   });
 
@@ -72,9 +91,12 @@ describe('assert-file', function() {
     });
 
     it('should throw if file contains string', function() {
-      expect(function() {
+      var err = catchError(function() {
         assertFile('test/fixtures/foo123.txt', { doesNotContain: 'foo' });
-      }).to.throw('AssertionError: \n\nexpected test/fixtures/foo123.txt:\n\nfoo\n123\nfoo123foo\nbla\n\nnot to contain:\n\nfoo\n: expected false to equal true')
+      });
+
+      expect(err).to.exist;
+      expect(err.toString()).to.equal('AssertionError: \n\nexpected test/fixtures/foo123.txt:\n\nfoo\n123\nfoo123foo\nbla\n\nnot to contain:\n\nfoo\n: expected false to equal true');
     });
 
     it('should pass if file does not contains multiple strings', function() {
@@ -82,9 +104,12 @@ describe('assert-file', function() {
     });
 
     it('should throw if file contains one of multiple strings', function() {
-      expect(function() {
+      var err = catchError(function() {
         assertFile('test/fixtures/foo123.txt', { doesNotContain: ['foo', 'bar'] });
-      }).to.throw('AssertionError: \n\nexpected test/fixtures/foo123.txt:\n\nfoo\n123\nfoo123foo\nbla\n\nnot to contain:\n\nfoo\n: expected false to equal true')
+      });
+
+      expect(err).to.exist;
+      expect(err.toString()).to.equal('AssertionError: \n\nexpected test/fixtures/foo123.txt:\n\nfoo\n123\nfoo123foo\nbla\n\nnot to contain:\n\nfoo\n: expected false to equal true');
     });
 
     it('should pass if file does not match regex', function() {
@@ -92,9 +117,12 @@ describe('assert-file', function() {
     });
 
     it('should throw if file matches regex', function() {
-      expect(function() {
+      var err = catchError(function() {
         assertFile('test/fixtures/foo123.txt', { doesNotContain: /fo+/ });
-      }).to.throw('AssertionError: \n\nexpected test/fixtures/foo123.txt:\n\nfoo\n123\nfoo123foo\nbla\n\nnot to contain:\n\n/fo+/\n: expected false to equal true')
+      });
+
+      expect(err).to.exist;
+      expect(err.toString()).to.equal('AssertionError: \n\nexpected test/fixtures/foo123.txt:\n\nfoo\n123\nfoo123foo\nbla\n\nnot to contain:\n\n/fo+/\n: expected false to equal true');
     });
 
     it('should pass if file does not match multiple regexes', function() {
@@ -102,9 +130,12 @@ describe('assert-file', function() {
     });
 
     it('should throw if file matches one of multiple regexes', function() {
-      expect(function() {
+      var err = catchError(function() {
         assertFile('test/fixtures/foo123.txt', { doesNotContain: [/fo+/, /ba./] });
-      }).to.throw('AssertionError: \n\nexpected test/fixtures/foo123.txt:\n\nfoo\n123\nfoo123foo\nbla\n\nnot to contain:\n\n/fo+/\n: expected false to equal true')
+      });
+
+      expect(err).to.exist;
+      expect(err.toString()).to.equal('AssertionError: \n\nexpected test/fixtures/foo123.txt:\n\nfoo\n123\nfoo123foo\nbla\n\nnot to contain:\n\n/fo+/\n: expected false to equal true');
     });
   });
 });
