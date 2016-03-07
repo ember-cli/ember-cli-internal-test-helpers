@@ -65,4 +65,46 @@ describe('assert-file', function() {
       }).to.throw('EqualityError: expected: `test/fixtures/foo123.txt`')
     });
   });
+
+  describe('doesNotContain', function() {
+    it('should pass if file does not contain string', function() {
+      assertFile('test/fixtures/foo123.txt', { doesNotContain: 'bar' });
+    });
+
+    it('should throw if file contains string', function() {
+      expect(function() {
+        assertFile('test/fixtures/foo123.txt', { doesNotContain: 'foo' });
+      }).to.throw('AssertionError: \n\nexpected test/fixtures/foo123.txt:\n\nfoo\n123\nfoo123foo\nbla\n\nnot to contain:\n\nfoo\n: expected false to equal true')
+    });
+
+    it('should pass if file does not contains multiple strings', function() {
+      assertFile('test/fixtures/foo123.txt', { doesNotContain: ['bar', 'baz'] });
+    });
+
+    it('should throw if file contains one of multiple strings', function() {
+      expect(function() {
+        assertFile('test/fixtures/foo123.txt', { doesNotContain: ['foo', 'bar'] });
+      }).to.throw('AssertionError: \n\nexpected test/fixtures/foo123.txt:\n\nfoo\n123\nfoo123foo\nbla\n\nnot to contain:\n\nfoo\n: expected false to equal true')
+    });
+
+    it('should pass if file does not match regex', function() {
+      assertFile('test/fixtures/foo123.txt', { doesNotContain: /bar/ });
+    });
+
+    it('should throw if file matches regex', function() {
+      expect(function() {
+        assertFile('test/fixtures/foo123.txt', { doesNotContain: /fo+/ });
+      }).to.throw('AssertionError: \n\nexpected test/fixtures/foo123.txt:\n\nfoo\n123\nfoo123foo\nbla\n\nnot to contain:\n\n/fo+/\n: expected false to equal true')
+    });
+
+    it('should pass if file does not match multiple regexes', function() {
+      assertFile('test/fixtures/foo123.txt', { doesNotContain: [/ba./, /\d{7}/] });
+    });
+
+    it('should throw if file matches one of multiple regexes', function() {
+      expect(function() {
+        assertFile('test/fixtures/foo123.txt', { doesNotContain: [/fo+/, /ba./] });
+      }).to.throw('AssertionError: \n\nexpected test/fixtures/foo123.txt:\n\nfoo\n123\nfoo123foo\nbla\n\nnot to contain:\n\n/fo+/\n: expected false to equal true')
+    });
+  });
 });
