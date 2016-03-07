@@ -13,6 +13,8 @@ describe('assert-file-to-not-exist', function() {
     });
 
     expect(err).to.exists;
-    expect(err.toString()).to.equal('AssertionError: expected \'foo\\n123\\nfoo123foo\\nbla\\n\' to not exist');
+    expect(err.toString()).to.equal('AssertionError: expected \'test/fixtures/foo123.txt\' to not exist');
+    expect(err.actual).to.not.exist;
+    expect(err.expected).to.not.exist;
   });
 });
