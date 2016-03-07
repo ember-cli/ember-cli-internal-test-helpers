@@ -4,6 +4,7 @@
   "description": "Internal test helpers for ember-cli",
   "main": "index.js",
   "scripts": {
+    "coverage": "istanbul cover _mocha",
     "test": "mocha"
   },
   "repository": {
@@ -35,6 +36,7 @@
     "walk-sync": "^0.2.6"
   },
   "devDependencies": {
+    "istanbul": "^0.4.2",
     "mocha": "^2.4.5"
   }
 }
