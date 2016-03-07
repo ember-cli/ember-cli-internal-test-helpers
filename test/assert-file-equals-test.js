@@ -13,6 +13,8 @@ describe('assert-file-equals', function() {
     });
 
     expect(err).to.exist;
-    expect(err.toString()).to.equal('AssertionError: expected \'foo\\n123\\nfoo123foo\\nbla\\n\' to equal \'\'');
+    expect(err.toString()).to.equal('AssertionError: expected \'test/fixtures/foo123.txt\' to match \'test/fixtures/empty.txt\' contents');
+    expect(err.actual).to.equal('foo\n123\nfoo123foo\nbla\n');
+    expect(err.expected).to.equal('');
   });
 });
