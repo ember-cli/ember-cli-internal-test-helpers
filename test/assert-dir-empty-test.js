@@ -1,6 +1,8 @@
 var assertDirEmpty = require('../lib/helpers/assert-dir-empty');
-var expect = require('chai').expect;
-var catchError = require('./helpers/catch-error');
+var chai = require('chai');
+var expect = chai.expect;
+
+chai.use(require('./helpers/throw-helper'));
 
 describe('assert-dir-empty', function() {
   it('should pass if directory does not exist', function() {
@@ -16,11 +18,10 @@ describe('assert-dir-empty', function() {
   });
 
   it('should throw if directory is not empty', function() {
-    var err = catchError(function() {
+    expect(function() {
       assertDirEmpty('test/fixtures/not-empty');
+    }).to.throw(function(err) {
+      expect(err.toString()).to.equal('AssertionError: test/fixtures/not-empty/ should be empty after `ember` tasks. Contained: empty.txt: expected [ \'empty.txt\' ] to deeply equal []');
     });
-
-    expect(err).to.exist;
-    expect(err.toString()).to.equal('AssertionError: test/fixtures/not-empty/ should be empty after `ember` tasks. Contained: empty.txt: expected [ \'empty.txt\' ] to deeply equal []');
   });
 });
