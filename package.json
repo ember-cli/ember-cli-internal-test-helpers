@@ -36,6 +36,7 @@
     "walk-sync": "^0.2.6"
   },
   "devDependencies": {
+    "eslint-plugin-chai-expect": "^1.1.1",
     "istanbul": "^0.4.2",
     "mocha": "^2.4.5"
   }
