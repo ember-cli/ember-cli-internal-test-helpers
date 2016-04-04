@@ -12,10 +12,6 @@ describe('assert-file-to-not-exist', function() {
   it('should throw if file exists', function() {
     expect(function() {
       assertFileToNotExist('test/fixtures/foo123.txt');
-    }).to.throw(function(err) {
-      expect(err.toString()).to.equal('AssertionError: expected \'test/fixtures/foo123.txt\' to not exist');
-      expect(err.actual).to.not.exist;
-      expect(err.expected).to.not.exist;
-    });
+    }).to.throw();
   });
 });
