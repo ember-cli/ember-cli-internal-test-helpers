@@ -1,4 +1,4 @@
-module.exports = function (chai, utils) {
+module.exports = function (chai /*, utils */) {
   var Assertion = chai.Assertion;
 
   Assertion.overwriteMethod('throw', function (_super) {
