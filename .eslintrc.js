@@ -5,6 +5,9 @@ module.exports = {
     node: true,
     mocha: true,
   },
+  plugins: [
+    'chai-expect',
+  ],
   rules: {
     /*** Possible Errors ***/
 
@@ -23,10 +26,6 @@ module.exports = {
     'no-eq-null': 2,
     'no-eval': 2,
     'no-new': 0,
-    'no-unused-expressions': [2, {
-      allowShortCircuit: true,
-      allowTernary: true,
-    }],
     'wrap-iife': 0,
     'yoda': 2,
 
@@ -61,5 +60,12 @@ module.exports = {
     'space-infix-ops': 2,
     'space-unary-ops': 2,
     'quotes': [2, 'single'],
+
+    // disabled due to chai expect assertions
+    'no-unused-expressions': 0,
+
+    'chai-expect/missing-assertion': 2,
+    'chai-expect/terminating-properties': 2,
+    'chai-expect/no-inner-compare': 2,
   },
 };
