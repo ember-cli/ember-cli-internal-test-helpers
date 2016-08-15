@@ -26,7 +26,7 @@
     "chai-files": "^1.1.0",
     "chalk": "^1.1.1",
     "configstore": "^1.2.1",
-    "cpr": "^0.4.2",
+    "cpr": "^2.0.0",
     "debug": "^2.2.0",
     "exists-sync": "0.0.3",
     "fs-extra": "^0.24.0",
