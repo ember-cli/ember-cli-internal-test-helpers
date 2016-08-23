@@ -30,7 +30,7 @@
     "debug": "^2.2.0",
     "exists-sync": "0.0.3",
     "fs-extra": "^0.24.0",
-    "lodash": "^4.0.0",
+    "lodash": "^4.14.2",
     "rsvp": "^3.0.17",
     "symlink-or-copy": "^1.0.1",
     "through": "^2.3.8",
