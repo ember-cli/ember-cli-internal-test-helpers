@@ -22,7 +22,7 @@
   "homepage": "https://github.com/ember-cli/ember-cli-internal-test-helpers#readme",
   "dependencies": {
     "chai": "^3.3.0",
-    "chai-as-promised": "^5.1.0",
+    "chai-as-promised": "^6.0.0",
     "chai-files": "^1.1.0",
     "chalk": "^1.1.1",
     "configstore": "^2.0.0",
