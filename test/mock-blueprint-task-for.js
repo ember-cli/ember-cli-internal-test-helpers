@@ -9,23 +9,22 @@ DummyBlueprint.prototype.taskFor = function() {
 
 describe('Disable multiple tasks on blueprint', function() {
 
-  it('should pass through for configured tasks', function() {
-    MockBlueprintTaskFor.disableTasks(DummyBlueprint, ['npm-install', 'bower-install']);
+  it('should pass through for pre-configured tasks', function() {
+    MockBlueprintTaskFor.disableTasks(DummyBlueprint);
     expect(new DummyBlueprint().taskFor('npm-install')).to.be.ok;
-    expect(new DummyBlueprint().taskFor('bower-install')).to.be.ok;
     MockBlueprintTaskFor.restoreTasks(DummyBlueprint);
   });
 
   it('shouldn\'t pass through for other tasks', function() {
-    MockBlueprintTaskFor.disableTasks(DummyBlueprint, []);
+    MockBlueprintTaskFor.disableTasks(DummyBlueprint);
     expect(function() { new DummyBlueprint().taskFor('bower-install') }).to.throw(Error);
     MockBlueprintTaskFor.restoreTasks(DummyBlueprint);
   });
 
   it('should pass through once restored', function() {
-    MockBlueprintTaskFor.disableTasks(DummyBlueprint, ['bower-install']);
+    MockBlueprintTaskFor.disableTasks(DummyBlueprint);
     MockBlueprintTaskFor.restoreTasks(DummyBlueprint);
-    expect(function() { new DummyBlueprint().taskFor('bower-install') }).to.throw(Error);
+    expect(function() { new DummyBlueprint().taskFor('npm-install') }).to.throw(Error);
   });
 
 });
