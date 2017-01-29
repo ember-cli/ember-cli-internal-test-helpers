@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha",
-    "test": "mocha",
-    "preversion": "npm test",
-    "postversion": "git push origin master --follow-tags && npm publish"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
